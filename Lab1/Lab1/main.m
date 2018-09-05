@@ -39,7 +39,8 @@ static void printLowercasedStr(NSString *inputStr) {
 
 static void printAsInt(NSString *inputStr) {
   // As NSInteger
-  // NSInteger inputNSInt = [inputStr integerValue];
+//  NSInteger inputNSInt = [inputStr integerValue];
+//  NSLog(@"%ld", (long)inputNSInt);
   
   int inputInt = [inputStr intValue];
   NSLog(@"%d", inputInt);
