@@ -42,7 +42,7 @@ static void printAsInt(NSString *inputStr) {
   // NSInteger inputNSInt = [inputStr integerValue];
   
   int inputInt = [inputStr intValue];
-  NSLog(@"%@", inputInt);
+  NSLog(@"%d", inputInt);
 }
 
 static void printCanadianizedStr(NSString *inputStr) {
