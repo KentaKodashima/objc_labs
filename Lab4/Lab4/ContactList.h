@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSMutableArray *contactList;
 
 - (void) addContact: (Contact *) newContact;
+- (ContactList *) searchForKeywordWith: (NSString *) keyword;
 
 @end

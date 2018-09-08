@@ -16,6 +16,7 @@
   if (self) {
     _name = name;
     _email = email;
+    _phone = [[NSMutableArray alloc] init];
   }
   return self;
 }
@@ -28,8 +29,11 @@
   return [NSString stringWithFormat:@"\n<%@> (%@)", self.name, self.email];
 }
 
-- (NSString *) contactDetail {
-  return @"";
+- (void) contactDetail
+{
+   NSString *result = [NSString stringWithFormat:@"\n<%@>\n(%@)", self.name, self.email];
+  
+  NSLog(@"%@", result);
 }
 
 @end

@@ -20,10 +20,21 @@
   return self;
 }
 
-- (void) addContact: (Contact *) newContact {
-  // ToDo: Bonus 3: Check duplicates
-  
+- (void) addContact: (Contact *) newContact
+{
   [_contactList addObject: newContact];
+}
+
+- (ContactList *) searchForKeywordWith: (NSString *) keyword
+{
+  ContactList *newContactList = [[ContactList alloc] init];
+  
+  for (Contact *contact in _contactList) {
+    if ([contact.name containsString: keyword] || [contact.email containsString: keyword]) {
+      [newContactList addContact:contact];
+    }
+  }
+  return newContactList;
 }
 
 - (NSString *)description
@@ -31,7 +42,7 @@
   NSMutableString *result = [NSMutableString new];
   int count = 0;
   for (Contact *contact in _contactList) {
-    NSString *contactString = [NSString stringWithFormat:@"%d: %@\n", count, contact];
+    NSString *contactString = [NSString stringWithFormat:@"\n%d: %@\n", count, contact];
     count++;
     [result appendString:contactString];
   }

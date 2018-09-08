@@ -10,6 +10,8 @@
 
 @interface InputHandler : NSObject
 
+@property (nonatomic, strong) NSMutableArray *history;
+
 + (NSString *) getUserInputWithLength: (int) maxLength withPrompt: (NSString *) prompt;
 
 @end
