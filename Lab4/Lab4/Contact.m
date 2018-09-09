@@ -16,7 +16,7 @@
   if (self) {
     _name = name;
     _email = email;
-    _phone = [[NSMutableArray alloc] init];
+    _phone = [[NSMutableDictionary alloc] init];
   }
   return self;
 }
@@ -26,14 +26,15 @@
 // Override to NSLog() actual contents, otherwise it's gonna print out the memory address
 - (NSString *)description
 {
-  return [NSString stringWithFormat:@"\n<%@> (%@)", self.name, self.email];
-}
-
-- (void) contactDetail
-{
-   NSString *result = [NSString stringWithFormat:@"\n<%@>\n(%@)", self.name, self.email];
+  NSMutableString *result = [NSMutableString new];
+  NSMutableString *phoneString = [NSMutableString new];
+  [result appendString: [NSString stringWithFormat:@"\n<%@>\n(%@)", self.name, self.email]];
+  for (id key in [_phone keyEnumerator]) {
+    phoneString = [NSMutableString stringWithFormat:@"\nLabel:%@\nNumber:%@", key, [_phone valueForKey:key]];
+    [result appendString: phoneString];
+  }
   
-  NSLog(@"%@", result);
+  return result;
 }
 
 @end

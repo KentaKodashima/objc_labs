@@ -33,12 +33,19 @@
   return trimedNSString;
 }
 
+
+
 - (NSString *)description
 {
   NSMutableString *result = [NSMutableString new];
-  for (NSString *command in _history) {
-    NSString *contactString = [NSString stringWithFormat:@"\n%@\n", command];
+  int historyCount = [_history count];
+  int index = historyCount - 1;
+  int counter = 0;
+  while (counter < 3) {
+    NSString *contactString = [NSString stringWithFormat:@"\n%@", _history[index]];
     [result appendString:contactString];
+    counter++;
+    index--;
   }
   
   return result;

@@ -44,22 +44,34 @@ int main(int argc, const char * argv[]) {
           // 1.2. get user input for name
           NSString *name = [InputHandler getUserInputWithLength:255 withPrompt:@"\nEnter name: "];
           
+          // 2. create a contact object based on the user input
+          Contact *newContact = [[Contact alloc] initWithName: name andEmail: email];
+          
           // 1.3. ask and get phone numbers
           NSString *label = [NSString alloc];
-          NSString *number= [NSString alloc];
+          NSString *number = [NSString alloc];
+          NSMutableDictionary *phoneDictionary = [NSMutableDictionary new];
           while (true) {
+            // Bonus 4: ask and get phone numbers
             NSString *askPhone = [InputHandler getUserInputWithLength:255 withPrompt:@"\nDo you want to add your phone number? y/n: "];
             
             if ([askPhone isEqualToString: @"n"]) {
               break;
             } else {
+              int counter = 0;
               label = [InputHandler getUserInputWithLength:255 withPrompt:@"\nEnter your phone's label: "];
-              number = [InputHandler getUserInputWithLength:255 withPrompt:@"\nEnter your phone numbers: "];
+              if ([[[newContact phone] allKeys] containsObject: label]) {
+                counter++;
+              }
+              if (counter != 0) {
+                NSLog(@"The label already exists.\nPlease use another label.");
+              } else {
+                number = [InputHandler getUserInputWithLength:255 withPrompt:@"\nEnter your phone numbers: "];
+                // Set new Dictionary
+                [[newContact phone] setValue:number forKey:label];
+              }
             }
           }
-          
-          // 2. create a contact object based on the user input
-          Contact *newContact = [[Contact alloc] initWithName: name andEmail: email];
           
           // 3. add the contact to ContactList's contacctList
           [contactList addContact: newContact];
@@ -79,14 +91,15 @@ int main(int argc, const char * argv[]) {
           NSLog(@"The number you entered is invalid.");
         } else {
           Contact *contactWithId = [contactList contactList][indexNum];
-          [contactWithId contactDetail];
+          NSLog(@"%@", contactWithId);
         }
       } else if ([option isEqualToString:@"find"]) {
         [[historyRecorder history] addObject:option];
         NSString *keyword = [InputHandler getUserInputWithLength:255 withPrompt:@"\nEnter a keyword to search: "];
         NSLog(@"%@", [contactList searchForKeywordWith:keyword]);
       } else if ([option isEqualToString:@"history"]) {
-        NSLog(@"%@", [historyRecorder history]);
+//        NSLog(@"%@", [historyRecorder history]);
+        NSLog(@"%@", historyRecorder);
         [[historyRecorder history] addObject:option];
       }
     }

@@ -12,9 +12,8 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSMutableArray *phone;
+@property (nonatomic, strong) NSMutableDictionary *phone;
 
 - (instancetype)initWithName: (NSString *) name andEmail: (NSString *) email;
-- (void) contactDetail;
 
 @end
