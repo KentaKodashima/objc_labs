@@ -10,17 +10,6 @@
 
 @implementation NSString (PigLatinization)
 
-//- (Boolean)checkPrefix:(NSArray *)srcStrArr targetStrArr:(NSArray *)vowels {
-//  for (NSString *word in srcStrArr) {
-//    for (NSString *vowel in vowels) {
-//      if ([word hasPrefix: vowel]) {
-//        return true;
-//      }
-//    }
-//  }
-//  return false;
-//}
-
 - (Boolean)checkPrefixWithTargetStrArr:(NSArray *)vowels {
   for (NSString *vowel in vowels) {
     if ([self hasPrefix: vowel]) {
