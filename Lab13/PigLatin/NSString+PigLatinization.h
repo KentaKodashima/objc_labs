@@ -10,7 +10,8 @@
 
 @interface NSString (PigLatinization)
 
-- (Boolean)checkPrefix:(NSArray *)tempArr targetStrArr:(NSArray *)vowels;
+//- (Boolean)checkPrefix:(NSArray *)tempArr targetStrArr:(NSArray *)vowels;
+- (Boolean)checkPrefixWithTargetStrArr:(NSArray *)vowels;
 - (NSString *) stringPigLatinized;
 
 @end

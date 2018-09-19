@@ -15,7 +15,7 @@ int main(int argc, const char * argv[]) {
     
     while (true) {
       
-      NSString *input = [InputHandler getUserInputWithLength:10 withPrompt: @"Enter a word you want to piglatinize or 'quit' to quit: "];
+      NSString *input = [InputHandler getUserInputWithLength:100 withPrompt: @"Enter a word you want to piglatinize or 'quit' to quit: "];
       
       if ([input isEqualToString:@"quit"]) {
         break;
